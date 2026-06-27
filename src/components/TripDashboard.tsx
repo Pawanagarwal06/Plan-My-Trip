@@ -58,11 +58,15 @@ export default function TripDashboard({ tripData, isLoading }: { tripData: DeepP
         <CardContent>
           <p className="text-lg mb-2 whitespace-normal break-words leading-relaxed">{tripData.ai_recommendation?.highlights || 'Analyzing the best options for you...'}</p>
           <div className="flex flex-wrap gap-2 mt-4">
-            <Badge className="bg-green-500/20 text-green-200 whitespace-normal text-center h-auto py-1">
+            <Badge className="bg-green-500/20 text-green-200 whitespace-normal text-left h-auto py-1 leading-snug">
               Savings: {tripData.ai_recommendation?.estimated_savings || '...'}
             </Badge>
-            <Badge className="bg-white/10">Mode: {tripData.ai_recommendation?.transport_mode}</Badge>
-            <Badge className="bg-white/10">Stay: {tripData.ai_recommendation?.stay_type}</Badge>
+            <Badge className="bg-white/10 whitespace-normal text-left h-auto py-1 leading-snug">
+              Mode: {tripData.ai_recommendation?.transport_mode}
+            </Badge>
+            <Badge className="bg-white/10 whitespace-normal text-left h-auto py-1 leading-snug">
+              Stay: {tripData.ai_recommendation?.stay_type}
+            </Badge>
           </div>
         </CardContent>
       </Card>

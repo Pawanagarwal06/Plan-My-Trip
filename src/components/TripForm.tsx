@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
-import { PlaneTakeoff, Sparkles } from 'lucide-react';
+import { PlaneTakeoff, Sparkles, ChevronDown } from 'lucide-react';
 import { signIn } from 'next-auth/react';
 import { DestinationType } from './3d/SceneManager';
 import TripDashboard from './TripDashboard';
@@ -146,8 +146,8 @@ export default function TripForm({ setSceneType }: { setSceneType: (type: Destin
         </div>
 
         <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center">
-          <div className="flex gap-4 items-center">
-            <Label>Travel Mode:</Label>
+          <div className="flex flex-wrap gap-2 md:gap-4 items-center">
+            <Label className="mr-2">Travel Mode:</Label>
             {['Budget', 'Comfort', 'Luxury'].map((mode) => (
               <button
                 key={mode}
@@ -162,8 +162,8 @@ export default function TripForm({ setSceneType }: { setSceneType: (type: Destin
             ))}
           </div>
 
-          <div className="flex gap-4 items-center">
-            <Label>Pacing:</Label>
+          <div className="flex flex-wrap gap-2 md:gap-4 items-center">
+            <Label className="mr-2">Pacing:</Label>
             {['Action-Packed', 'Relaxed'].map((mode) => (
               <button
                 key={mode}
@@ -251,6 +251,12 @@ export default function TripForm({ setSceneType }: { setSceneType: (type: Destin
               </div>
             );
           })()
+        )}
+
+        {(isLoading || object) && (
+          <div className="flex justify-center mt-2 animate-bounce">
+            <ChevronDown className="w-8 h-8 text-white/50" />
+          </div>
         )}
       </form>
 

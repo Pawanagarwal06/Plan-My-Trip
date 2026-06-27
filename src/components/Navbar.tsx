@@ -8,8 +8,8 @@ export default function Navbar() {
   const { data: session, status } = useSession();
 
   return (
-    <nav className="absolute top-0 w-full z-50 p-6 flex justify-between items-center bg-gradient-to-b from-black/60 to-transparent">
-      <Link href="/" className="text-2xl font-black tracking-tighter text-white">
+    <nav className="absolute top-0 w-full z-50 p-4 md:p-6 flex justify-between items-center bg-gradient-to-b from-black/60 to-transparent">
+      <Link href="/" className="text-lg md:text-2xl font-normal md:font-black tracking-tight md:tracking-tighter text-white">
         PLAN MY TRIP
       </Link>
       
@@ -32,7 +32,7 @@ export default function Navbar() {
         ) : (
           <Button 
             onClick={() => signIn("google")} 
-            className="bg-white text-black hover:bg-gray-200 font-bold rounded-full px-6"
+            className="bg-white text-black hover:bg-gray-200 font-normal md:font-bold rounded-full px-4 md:px-6 text-sm md:text-base"
           >
             Sign In
           </Button>
