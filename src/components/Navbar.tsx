@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <nav className="absolute top-0 w-full z-50 p-4 md:p-6 flex justify-between items-center bg-gradient-to-b from-black/60 to-transparent">
       <Link href="/" className="text-lg md:text-2xl font-normal md:font-black tracking-tight md:tracking-tighter text-white">
-        PLAN MY TRIP
+        Plan My Trip
       </Link>
       
       <div>
