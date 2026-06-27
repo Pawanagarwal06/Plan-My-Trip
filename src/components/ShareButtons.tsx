@@ -14,7 +14,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
   const [fullUrl, setFullUrl] = useState(url);
 
   useEffect(() => {
-    if (typeof navigator !== 'undefined' && navigator.share) {
+    if (typeof navigator !== 'undefined' && 'share' in navigator) {
       setCanNativeShare(true);
     }
     if (typeof window !== 'undefined' && !url.startsWith('http')) {
@@ -36,7 +36,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
   };
 
   const handleNativeShare = async () => {
-    if (navigator.share) {
+    if ('share' in navigator) {
       try {
         await navigator.share({
           title: title,
