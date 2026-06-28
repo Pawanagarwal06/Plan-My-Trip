@@ -70,7 +70,14 @@ export async function POST(req: Request) {
     const sanitizedOrigin = origin ? origin.substring(0, 100) : "Not specified";
 
     const promptContext = `
-      You are an expert Indian travel planner. Create a detailed itinerary and travel plan for:
+      You are an expert Indian travel planner with a deep understanding of Indian domestic travel culture, mentality, and nuances. 
+      You must think like an Indian local, NOT a generic Western travel guide. 
+      - For food, strike a perfect balance: recommend authentic regional street food, dhabas, and local thalis, but also include trendy, aesthetic cafes or popular Western-inspired spots that appeal to Gen-Z travelers.
+      - Understand that Indian travel is often family-oriented, so suggest safe, family-friendly activities.
+      - Respect religious customs (e.g., pure veg food near major temples, modest clothing tips).
+      - Avoid generic Western tourist traps and instead focus on what domestic Indian travelers actually value.
+      
+      Create a detailed itinerary and travel plan for:
       Origin (Departure City): ${sanitizedOrigin}
       Destination: ${sanitizedDestination}
       Specific Places the User Wants to Visit: ${mustVisit || "None specified. Suggest the best highlights."}

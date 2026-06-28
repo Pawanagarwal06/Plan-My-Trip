@@ -155,7 +155,7 @@ export default function TripForm({ setSceneType }: { setSceneType: (type: Destin
                 type="button"
                 onClick={() => setTripTheme(theme as any)}
                 className={`px-4 py-2 rounded-full border transition-all ${
-                  tripTheme === theme ? 'bg-purple-500 text-white border-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.5)]' : 'border-white/30 hover:bg-white/20 text-gray-300'
+                  tripTheme === theme ? 'bg-white text-black border-white' : 'border-white/30 hover:bg-white/20 text-gray-300'
                 }`}
               >
                 {theme}
@@ -172,7 +172,7 @@ export default function TripForm({ setSceneType }: { setSceneType: (type: Destin
                   type="button"
                   onClick={() => setTravelMode(mode as any)}
                   className={`px-4 py-2 rounded-full border transition-all ${
-                    travelMode === mode ? 'bg-white text-black border-white' : 'border-white/30 hover:bg-white/20'
+                    travelMode === mode ? 'bg-white text-black border-white' : 'border-white/30 hover:bg-white/20 text-gray-300'
                   }`}
                 >
                   {mode}
@@ -188,7 +188,7 @@ export default function TripForm({ setSceneType }: { setSceneType: (type: Destin
                   type="button"
                   onClick={() => setTripPacing(mode as any)}
                   className={`px-4 py-2 rounded-full border transition-all ${
-                    tripPacing === mode ? 'bg-teal-500 text-white border-teal-500' : 'border-white/30 hover:bg-white/20 text-gray-300'
+                    tripPacing === mode ? 'bg-white text-black border-white' : 'border-white/30 hover:bg-white/20 text-gray-300'
                   }`}
                 >
                   {mode}
