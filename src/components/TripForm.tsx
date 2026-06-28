@@ -23,7 +23,7 @@ export default function TripForm({ setSceneType }: { setSceneType: (type: Destin
   const [budget, setBudget] = useState<number[]>([40000]);
   const [travelMode, setTravelMode] = useState<'Budget' | 'Comfort' | 'Luxury'>('Comfort');
   const [tripPacing, setTripPacing] = useState<'Action-Packed' | 'Relaxed'>('Action-Packed');
-  const [tripTheme, setTripTheme] = useState<'Spiritual & Temples' | 'Nature & Adventure' | 'Leisure & Chill' | 'Culture & History'>('Leisure & Chill');
+  const [tripThemes, setTripThemes] = useState<string[]>(['Leisure & Chill']);
 
   const { object, submit, isLoading, error } = useObject({
     api: '/api/generate-trip',
@@ -52,7 +52,7 @@ export default function TripForm({ setSceneType }: { setSceneType: (type: Destin
       formattedDates = `${days} Days (${formattedStart} - ${formattedEnd})`;
     }
 
-    submit({ origin, destination, mustVisit, dates: formattedDates, travelers, budget: budget[0], travelMode, tripPacing, tripTheme });
+    submit({ origin, destination, mustVisit, dates: formattedDates, travelers, budget: budget[0], travelMode, tripPacing, tripThemes });
   };
 
   return (
@@ -148,14 +148,21 @@ export default function TripForm({ setSceneType }: { setSceneType: (type: Destin
 
         <div className="flex flex-col gap-6">
           <div className="flex flex-wrap gap-2 md:gap-4 items-center">
-            <Label className="mr-2">Trip Vibe:</Label>
+            <Label className="mr-2">Trip Vibe (Pick multiple):</Label>
             {['Spiritual & Temples', 'Nature & Adventure', 'Leisure & Chill', 'Culture & History'].map((theme) => (
               <button
                 key={theme}
                 type="button"
-                onClick={() => setTripTheme(theme as any)}
+                onClick={() => {
+                  setTripThemes(prev => {
+                    if (prev.includes(theme)) {
+                      return prev.length > 1 ? prev.filter(t => t !== theme) : prev; // Prevent deselecting all
+                    }
+                    return [...prev, theme];
+                  });
+                }}
                 className={`px-4 py-2 rounded-full border transition-all ${
-                  tripTheme === theme ? 'bg-white text-black border-white' : 'border-white/30 hover:bg-white/20 text-gray-300'
+                  tripThemes.includes(theme) ? 'bg-white text-black border-white' : 'border-white/30 hover:bg-white/20 text-gray-300'
                 }`}
               >
                 {theme}
